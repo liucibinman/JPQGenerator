@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jpqgenerator-configuration SYSTEM "jpqgenerator-configuration.dtd">
+<!--注意:当同级有多个相同标签时,可在添加id属性来区分出错时准确的找出错的位置-->
+<jpqgenerator-configuration>
+	<!--数据库驱动jar包路径-->
+	<jar-path>数据库驱动jar包路径</jar-path>
+	<!--全局参数
+	<properties>
+		<property name="键" value="值" />
+		<property name="键">
+			<value>值1</value>
+			<value>值2</value>
+			...
+		</property>
+		...
+	</properties>
+	-->
+	<!--每个数据库一个context-->
+	<context>
+		<!--JDBC连接设置-->
+		<jdbc-connection>
+			<property name="jdbcDriver" value="数据库驱动" />
+			<property name="jdbcUrl" value="数据库地址" />
+			<property name="user" value="数据库用户名" />
+			<property name="password" value="数据库密码" />
+		</jdbc-connection>
+		<!--context参数
+		<properties>
+			<property name="键" value="值" />
+			<property name="键">
+				<value>值1</value>
+				<value>值2</value>
+				...
+			</property>
+			...
+		</properties>
+		-->
+		<!--任务,每个context至少一个 task-->
+		<task>
+			<!--扫描表设置-->
+			<scan-table scan-all="是否扫描全部(为true时include无效,为false时exclude无效)" table-naming-style="指定数据库表名的命名风格" column-naming-style="指定数据库列名的命名风格" wrapper-class="是否使用包装类">
+				<!--包含的表
+					<include table="表名"/>
+					<include table="正则匹配表名" rex="true"/>
+					...
+				-->
+				<!--排除的表
+					<exclude table="表名"/>
+					<exclude table="正则匹配表名" rex="true"/>
+					...
+				-->
+			</task-table>
+			<!--context参数
+			<properties>
+				<property name="键" value="值" />
+				<property name="键">
+					<value>值1</value>
+					<value>值2</value>
+					...
+				</property>
+				...
+			</properties>
+			-->
+			<!--目标设置-->
+			<target-list encoding="文件字符编码" file-path="文件保存位置">
+				<!--每个 target-list 至少一个 target-->
+				<target template-file="模板位置"
+						file-name="目标文件名"
+						target-package="目标文件包">
+						<!--当前target参数
+						<property name="键" value="值" />
+						<property name="键">
+							<value>值1</value>
+							<value>值2</value>
+							...
+						</property>
+						...
+						-->
+				</target>
+			</target-list>
+		</task>
+	</context>
+</jpqgenerator-configuration>

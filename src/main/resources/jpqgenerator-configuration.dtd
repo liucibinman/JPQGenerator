@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!ELEMENT jpqgenerator-configuration (jar-path+, properties?, context+)>
+<!ELEMENT jar-path (#PCDATA)>
+<!ATTLIST  jar-path
+id CDATA #IMPLIED
+>
+<!ELEMENT context (jdbc-connection, properties?, task+)>
+<!ATTLIST  context
+id CDATA #IMPLIED
+>
+<!ELEMENT jdbc-connection (property+)>
+<!ELEMENT task (scan-table, properties?, target-list)>
+<!ATTLIST  task
+id CDATA #IMPLIED
+>
+<!ELEMENT scan-table (include*, exclude*)>
+<!ATTLIST  scan-table
+scan-all (true|false) #REQUIRED
+table-naming-style (lower-camel-case|upper-camel-case|under-score-case) #REQUIRED
+column-naming-style (lower-camel-case|upper-camel-case|under-score-case) #REQUIRED
+wrapper-class (true|false) #IMPLIED
+>
+<!ELEMENT include EMPTY>
+<!ATTLIST  include
+id CDATA #IMPLIED
+table CDATA #REQUIRED
+rex (true|false) #IMPLIED
+>
+<!ELEMENT exclude EMPTY>
+<!ATTLIST  exclude
+id CDATA #IMPLIED
+table CDATA #REQUIRED
+rex (true|false) #IMPLIED
+>
+<!ELEMENT target-list (target+)>
+<!ATTLIST  target-list
+file-path CDATA #REQUIRED
+encoding CDATA #IMPLIED
+>
+<!ELEMENT target (EMPTY|property+)*>
+<!ATTLIST  target
+id CDATA #IMPLIED
+template-file CDATA #REQUIRED
+file-name CDATA #REQUIRED
+target-package CDATA #REQUIRED
+>
+<!ELEMENT properties (property+)>
+<!ELEMENT property (EMPTY|value+)*>
+<!ATTLIST  property
+id CDATA #IMPLIED
+name CDATA #REQUIRED
+value CDATA #IMPLIED
+>
+<!ELEMENT value (#PCDATA)>
+<!ATTLIST  value
+id CDATA #IMPLIED
+>

@@ -1,2 +1,160 @@
 # JPQGenerator
-Java项目快速生成器
+## 介绍
+JPQGenerator(Java项目快速生成器)提供数据库元数据,使用freemarker通过模板生成Java项目.
+通过配置文件可同时对多个数据库,多个任务,多个目标进行生成.
+扫描数据库表时可使用正则表达式进行包含扫描或排除扫描.
+对目标对象(target)配置参数时可以使用模板数据对象进行动态设置.
+## 运行
+### 生成JPQGenerator项目结构
+	java -jar JPQGenerator.jar start 项目名
+### 生成Java工程
+	java -jar JPQGenerator.jar 配置文件路径
+## 模板数据对象
+- global(Map) 全局参数
+- context(Map) context参数
+- task(Map) task参数
+- attributes(Map) target参数
+- table 数据表
+	- name 表名
+		- originalType 原始形式
+		- classType 类形式
+		- fieldType 字段形式
+		- lowerCaseType 小写形式
+		- upperCaseType 大写形式
+		- getOriginalType(int begin)
+		- getOriginalType(int begin, int end)
+		- getClassType(int begin)
+		- getClassType(int begin, int end)
+		- getFieldType(int begin)
+		- getFieldType(int begin, int end)
+		- getLowerCaseType(int begin)
+		- getLowerCaseType(int begin, int end)
+		- getUpperCaseType(int begin)
+		- getUpperCaseType(int begin, int end)
+	- remarks 表注释
+	- pkColumn 主键列
+		- name 列名
+			- originalType 原始形式
+			- classType 类形式
+			- fieldType 字段形式
+			- lowerCaseType 小写形式
+			- upperCaseType 大写形式
+			- getOriginalType(int begin)
+			- getOriginalType(int begin, int end)
+			- getClassType(int begin)
+			- getClassType(int begin, int end)
+			- getFieldType(int begin)
+			- getFieldType(int begin, int end)
+			- getLowerCaseType(int begin)
+			- getLowerCaseType(int begin, int end)
+			- getUpperCaseType(int begin)
+			- getUpperCaseType(int begin, int end)
+		- remarks 列注释
+		- type 列类型
+			- sqlType 数据库中原始类型
+			- jdbcType jdbc类型
+			- javaType java类型
+			- javaTypePackage java类型依赖的包
+	- fkColumns(List) 外键列
+		- name 列名
+			- originalType 原始形式
+			- classType 类形式
+			- fieldType 字段形式
+			- lowerCaseType 小写形式
+			- upperCaseType 大写形式
+			- getOriginalType(int begin)
+			- getOriginalType(int begin, int end)
+			- getClassType(int begin)
+			- getClassType(int begin, int end)
+			- getFieldType(int begin)
+			- getFieldType(int begin, int end)
+			- getLowerCaseType(int begin)
+			- getLowerCaseType(int begin, int end)
+			- getUpperCaseType(int begin)
+			- getUpperCaseType(int begin, int end)
+		- remarks 列注释
+		- type 列类型
+			- sqlType 数据库中原始类型
+			- jdbcType jdbc类型
+			- javaType java类型
+			- javaTypePackage java类型依赖的包
+		- refTableName 引用表名
+			- originalType 原始形式
+			- classType 类形式
+			- fieldType 字段形式
+			- lowerCaseType 小写形式
+			- upperCaseType 大写形式
+			- getOriginalType(int begin)
+			- getOriginalType(int begin, int end)
+			- getClassType(int begin)
+			- getClassType(int begin, int end)
+			- getFieldType(int begin)
+			- getFieldType(int begin, int end)
+			- getLowerCaseType(int begin)
+			- getLowerCaseType(int begin, int end)
+			- getUpperCaseType(int begin)
+			- getUpperCaseType(int begin, int end)
+		- refColunmName 引用列名
+			- originalType 原始形式
+			- classType 类形式
+			- fieldType 字段形式
+			- lowerCaseType 小写形式
+			- upperCaseType 大写形式
+			- getOriginalType(int begin)
+			- getOriginalType(int begin, int end)
+			- getClassType(int begin)
+			- getClassType(int begin, int end)
+			- getFieldType(int begin)
+			- getFieldType(int begin, int end)
+			- getLowerCaseType(int begin)
+			- getLowerCaseType(int begin, int end)
+			- getUpperCaseType(int begin)
+			- getUpperCaseType(int begin, int end)
+	- columns(List) 其余列
+		- name 列名
+			- originalType 原始形式
+			- classType 类形式
+			- fieldType 字段形式
+			- lowerCaseType 小写形式
+			- upperCaseType 大写形式
+			- getOriginalType(int begin)
+			- getOriginalType(int begin, int end)
+			- getClassType(int begin)
+			- getClassType(int begin, int end)
+			- getFieldType(int begin)
+			- getFieldType(int begin, int end)
+			- getLowerCaseType(int begin)
+			- getLowerCaseType(int begin, int end)
+			- getUpperCaseType(int begin)
+			- getUpperCaseType(int begin, int end)
+		- remarks 列注释
+		- type 列类型
+			- sqlType 数据库中原始类型
+			- jdbcType jdbc类型
+			- javaType java类型
+			- javaTypePackage java类型依赖的包
+	- allColums(List) 使用列
+		- name 列名
+			- originalType 原始形式
+			- classType 类形式
+			- fieldType 字段形式
+			- lowerCaseType 小写形式
+			- upperCaseType 大写形式
+			- getOriginalType(int begin)
+			- getOriginalType(int begin, int end)
+			- getClassType(int begin)
+			- getClassType(int begin, int end)
+			- getFieldType(int begin)
+			- getFieldType(int begin, int end)
+			- getLowerCaseType(int begin)
+			- getLowerCaseType(int begin, int end)
+			- getUpperCaseType(int begin)
+			- getUpperCaseType(int begin, int end)
+		- remarks 列注释
+		- type 列类型
+			- sqlType 数据库中原始类型
+			- jdbcType jdbc类型
+			- javaType java类型
+			- javaTypePackage java类型依赖的包
+	- dependentPackages 表中使用列依赖的Java包
+- package 所在包
